@@ -27,8 +27,14 @@ class GameController extends Controller
     }
 
 
-    public function play()
+    public function play(Request $request)
     {
-        return back()->with('status', 'Game was played!');
+        /* Get all available prizes */
+        $prizes = config('prizes.types');
+
+        /* Get random price */
+        $prize = array_rand($prizes);
+
+        return back()->with('status', 'Congratulations, you won is ' . $prizes[$prize]['name']);
     }
 }
