@@ -37,9 +37,28 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
+    /**
+     * Get prizes for user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function prizes()
     {
         return $this->hasMany(Prize::class)->with('prizeable');
     }
+
+    // public function bonuses()
+    // {
+    //     return $this->morphedByMany(PrizeBonus::class, 'model', 'prizes', 'id', 'model_id', 'model');
+    // }
+
+    // public function money()
+    // {
+    //     return $this->morphedByMany(PrizeMoney::class, 'model', 'prizes', 'id', 'model_id', 'model');
+    // }
+
+    // public function thing()
+    // {
+    //     return $this->morphedByMany(PrizeThing::class, 'model', 'prizes', 'id', 'model_id', 'model');
+    // }
 }
