@@ -4,16 +4,16 @@ return [
     'types' => [
         App\PrizeBonus::class => [
             'name' => 'bonuses',
-            'limit' => null,
+            'limit' => false,
 
         ],
         App\PrizeMoney::class => [
             'name' => 'money',
-            'limit' => 100,
+            'limit' => true,
         ],
         App\PrizeThing::class => [
             'name' => 'thing',
-            'limit' => 10,
+            'limit' => true,
         ],
     ],
 ];

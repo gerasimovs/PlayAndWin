@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\PrizeService;
 
 class GameController extends Controller
 {
@@ -27,14 +28,10 @@ class GameController extends Controller
     }
 
 
-    public function play(Request $request)
+    public function play(Request $request, PrizeService $prizeService)
     {
-        /* Get all available prizes */
-        $prizes = config('prizes.types');
+        $prize = $prizeService->getPrize();
 
-        /* Get random price */
-        $prize = array_rand($prizes);
-
-        return back()->with('status', 'Congratulations, you won is ' . $prizes[$prize]['name']);
+        return back()->with('status', 'Congratulations, you won is ' . $prize->name);
     }
 }
